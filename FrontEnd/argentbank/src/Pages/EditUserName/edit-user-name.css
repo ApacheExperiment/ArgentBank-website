@@ -1,0 +1,32 @@
+.editUN {
+    font-size: 1rem;
+}
+.editUN-title {
+    font-weight: normal;
+    margin-bottom: 0.5em;
+}
+.editUN-form {
+    margin: auto;
+    width: 50vw;
+}
+.editUN-label {
+    font-size: 1em;
+    margin-right: 10px;
+}
+.editUN-input {
+    width: 10em;
+    font-size: 1em;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.editUN-input-wrapper {
+    padding: 5px;
+    width: 100%;
+}
+.editUN-buttons-wrapper {
+    margin: 40px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 5px;
+}
