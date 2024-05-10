@@ -1,14 +1,15 @@
 import React from 'react'
 import Header from '../../Containers/Header/Header'
-import Account from '../../Components/Account/Account'
-function User () {
+import Accounts from '../../Containers/Accounts/Accounts'
+
+function Profile () {
     return (
         <main className="main bg-dark">
             <Header />
             <h2 className="sr-only">Accounts</h2>
-            <Account />
+            <Accounts />
         </main>
     );
 }
 
-export default User;
+export default Profile;

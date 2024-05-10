@@ -48,3 +48,30 @@
     background-color: #00bc77;
     color: #fff;
 }
+.transaction-button-arrow,
+.transaction-button-arrow:hover {
+    border: none;
+    width: 50px;
+    height: 80px;
+    background: url("../../assets/img/arrow_right.webp");
+    background-position: center;
+}
+
+@media screen and (max-width: 450px) {
+    .transaction-button-arrow,
+    .transaction-button-arrow:hover {
+        width: 30px;
+        height: 50px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+@media screen and (max-width: 400px) {
+    .transaction-button-arrow,
+    .transaction-button-arrow:hover {
+        width: 15px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}

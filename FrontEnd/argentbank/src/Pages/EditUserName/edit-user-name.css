@@ -9,6 +9,14 @@
     margin: auto;
     width: 50vw;
 }
+.editUn-error-input {
+    border: 2px solid red;
+}
+.editUN-error-message {
+    font-size: 18px;
+    color: red;
+    height: 40px;
+}
 .editUN-label {
     font-size: 1em;
     margin-right: 10px;

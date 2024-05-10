@@ -6,9 +6,24 @@
     margin-top: 3rem;
     padding: 2rem;
 }
-
+.error {
+    border: 2px solid red;
+}
+.error-message {
+    font-size: 18px;
+    color: red;
+}
 .sign-in-icon {
     font-size: 5rem;
+}
+.password-toggle-icon {
+    font-size: 1.2rem;
+    position: absolute;
+    right: 5px;
+    bottom: 8px;
+}
+.fa-eye {
+    right: 6px;
 }
 .input-remember {
     display: flex;
@@ -23,6 +38,7 @@
     flex-direction: column;
     text-align: left;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .input-wrapper label {
