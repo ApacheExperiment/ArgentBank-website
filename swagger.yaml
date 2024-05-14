@@ -104,8 +104,8 @@ paths:
   #Proposals---------------------------------------------------------
   /user/accounts: #Endpoint for bank user access to bank accounts
     get: #Get request to find bank user access to bank accounts
-      #security:
-        #- Bearer: [] #Authentication expected
+      security:
+        - Bearer: [] #Authentication expected
       tags:
         - User Module
       summary: User Bank Accounts
@@ -116,37 +116,41 @@ paths:
         '200':
           description: User bank accounts retrieved successully
           schema:
-            type: "array"
+            type: 'array'
             $ref: '#/definitions/Account'
         '400':
           description: Invalid Fields
         '500':
-          description: Internal Server Error #Not authorized (Bearer token expected)
+          description: Internal Server Error
   /user/accounts/{accountId}/transactions: #Endpoint for bank user access to bank account transations
     get: #Get request to find bank user access to bank account transations
-      #security:
-        #- Bearer: [] #Authentication expected
+      security:
+        - Bearer: [] #Authentication expected
       tags:
         - User Module
-      summary: User Bank Account Operations
-      decription: API retrieve user's bank account transations
+      summary: User Bank Account Transactions
+      description: API retrieve user's bank account transactions
       parameters:
-      - in: path
-        name: accountId
-        description: ID of the user's bank account
-        required: true
-        type: string
-      - in: query
-        name: page
-        description: Page number 
-        type: integer
+        - in: path
+          name: accountId
+          description: ID of the user's bank account
+          required: true
+          type: string
+        - in: query
+          name: page
+          description: Page number
+          type: integer
+        - in: query
+          name: limit
+          description: Number of transactions on page
+          type: integer
       produces:
         - application/json
       responses:
         '200':
           description: User bank account transactions retrieved successully
           schema:
-            type: "array"
+            type: 'array'
             items:
               $ref: '#/definitions/Transaction' # Reference to a single transaction
         '400':
@@ -155,18 +159,18 @@ paths:
           description: Internal Server Error
   /transactions/{transactionId}: #Endpoint to get transaction details
     get: #Get request to find transaction details
-      #security:
-        #- Bearer: [] #Authentication expected
+      security:
+        - Bearer: [] #Authentication expected
       tags:
-      - User Module
+        - User Module
       summary: Transactions Details
       description: API retrieve transaction details of user
       parameters:
-      - in: path
-        name: transactionId
-        description: ID of the transaction to find
-        required: true
-        type: string
+        - in: path
+          name: transactionId
+          description: ID of the transaction to find
+          required: true
+          type: string
       produces:
         - application/json
       responses:
@@ -179,6 +183,36 @@ paths:
         '500':
           description: Internal Server Error
 
+    patch: # updates transaction details (note and category) without changing the rest of the content
+      security:
+        - Bearer: [] #Authentication expected
+      tags:
+        - User Module
+      summary: Updating Transaction
+      description: API updating notes and categories of a transaction
+      parameters:
+        - in: path
+          name: transactionId
+          description: ID of the transaction to update
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Updating transaction details
+          required: true
+          schema:
+            $ref: "#/definitions/UpdateTransaction"
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction updated successfully
+          schema:
+            $ref: "#/definitions/Transaction"
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
   #------------------------------------------------------------------
 securityDefinitions:
   Bearer:
@@ -236,7 +270,7 @@ definitions:
       userName:
         type: string
   #Proposals-----------------------------------------------
-  UsersAccountsResponse:
+  UserAccountsResponse:
     type: object
     properties: 
       accounts:
@@ -249,7 +283,7 @@ definitions:
       transactions:
         type: array
         items:
-        $ref: '#/definitions/Transaction'
+          $ref: '#/definitions/Transaction'
   Account:
     type: object
     properties:
@@ -258,7 +292,7 @@ definitions:
         description: Account ID
       name:
         type: string
-        description: Account Name
+        description: Account name
       type:
         type: string
         description: Account type
@@ -271,27 +305,35 @@ definitions:
       id:
         type: string
         description: Transaction ID
-    date:
-      type: string
-      description: Transaction date
-    description:
-      type: string
-      description: Transaction description
-    amount:
-      type: string
-      description: Transaction amount
-    balance:
-      type: string
-      description: Account balance
-    transaction type:
-      type: string
-      description: Transaction type
-    cagtegory:
-      type: string
-      description: Transaction category
-    note:
-      type: string
-      description: Transaction note
-
+      date:
+        type: string
+        description: Transaction date
+      description:
+        type: string
+        description: Transaction description
+      amount:
+        type: number
+        description: Transaction amount
+      balance:
+        type: number
+        description: Account balance
+      transaction type:
+        type: string
+        description: Transaction type
+      category:
+        type: string
+        description: Transaction category
+      note:
+        type: string
+        description: Transaction note
+  UpdateTransaction: 
+    type: object
+    properties:
+      category:
+        type: string
+        description: Updating transaction category
+      note:
+        type: string
+        description: Updating transaction note 
   #--------------------------------------------------------
 

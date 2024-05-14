@@ -7,7 +7,7 @@ import {  // Import des fonctions d'appel d'API
 import { logout } from "../../Services/authService";
 
 
-//Définit l'état initial du slice contenant les informations sur la connexion de l'utilisateur, le token d'authentification et le profil utilisateur 
+//Définit le State initial du slice contenant les informations sur la connexion de l'utilisateur, le token d'authentification et le profil utilisateur 
 // Pour réutiliser cette valeur dans la "slice" et dans le "reducer"
 const initialState = {
   isConnected: false, // Indique si l'utilisateur est connecté
@@ -15,8 +15,8 @@ const initialState = {
   userProfile: {}, // Informations sur le profil d'utilisateur
 };
 
-// Utilisation de createSlice pour créer un slice Redux nommé "user" avec des reducers pour mettre à jour l'état.
-// Les reducers définissent des actions pour mettre à jour les parties spécifiques de l'état.
+// Utilisation de createSlice pour créer un slice Redux nommé "user" avec des reducers pour mettre à jour le State.
+// Les reducers définissent des actions pour mettre à jour les parties spécifiques du State.
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -50,7 +50,7 @@ export const fetchUserProfileAsync = (token) => {
       dispatch(setUserProfile(userProfile));
     } catch (error) {
       if (error.message === "Token invalide") {
-        // Gestion de l'erreur en mettant à jour l'état de connexion
+        // Gestion de l'erreur en mettant à jour le State de connexion
         logout(dispatch);
         console.error("Token invalide. Déconnecté.");
       } else {
