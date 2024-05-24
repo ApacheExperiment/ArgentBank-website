@@ -102,14 +102,14 @@ paths:
         '500':
           description: Internal Server Error
   #Proposals---------------------------------------------------------
-  /user/accounts: #Endpoint for bank user access to bank accounts
+  /accounts: #Endpoint for bank user access to bank accounts
     get: #Get request to find bank user access to bank accounts
       security:
         - Bearer: [] #Authentication expected
       tags:
         - User Module
       summary: User Bank Accounts
-      description: Api to get the user's bank accounts
+      description: API to get to connected users bank accounts
       produces:
         - application/json
       responses:
@@ -117,12 +117,13 @@ paths:
           description: User bank accounts retrieved successully
           schema:
             type: 'array'
-            $ref: '#/definitions/Account'
+            items:
+              $ref: '#/definitions/Account' #Reference to a single account
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/transactions: #Endpoint for bank user access to bank account transations
+  /accounts/{accountId}/transactions: #Endpoint for bank user access to bank account transations
     get: #Get request to find bank user access to bank account transations
       security:
         - Bearer: [] #Authentication expected
@@ -152,7 +153,7 @@ paths:
           schema:
             type: 'array'
             items:
-              $ref: '#/definitions/Transaction' # Reference to a single transaction
+              $ref: '#/definitions/Transaction' #Reference to a single transaction
         '400':
           description: Invalid Fields
         '500':
