@@ -12,7 +12,7 @@ const AuthKeep = ({ children }) => {             // Composant protégeant les ro
     if (isConnected !== null) {                   // Vérification si le state d'authentification est chargé
       setLoading(false);                          // Si c'est le cas, le chargement s'arrête
     } else {
-      setTimeout(() => {                          // ISi non, un délai est enclenché avant d'arrêter le chargement
+      setTimeout(() => {                          // Si non, un délai est enclenché avant d'arrêter le chargement
         setLoading(false);
       }, 900);
     }

@@ -4,7 +4,7 @@ const API_URL =
 
 // Fonction asynchrone pour faire une requête POST (connexion utilisateur) au endpoint de connexion
 export const loginUser = async (email, password) => {
-  const requestUrl = `${API_URL}/user/login`;                   // URL de la reuqête
+  const requestUrl = `${API_URL}/user/login`;                   // URL de la requête
   const requestHeaders = {
     "Content-Type": "application/json",                         // En tête de la requête
   };

@@ -37,7 +37,7 @@ const userSlice = createSlice({
     resetUserProfile: () => initialState,
   },
 });
-// Export des d'actions défini dans le slice pour les reducers
+// Export des actions défini dans le slice pour les reducers
 export const { setConnectionIndicator, setToken, setUserProfile, resetUserProfile } =
   userSlice.actions;
 
@@ -49,14 +49,13 @@ export const fetchUserProfileAsync = (token) => {
       const userProfile = userProfileData.body;
       dispatch(setUserProfile(userProfile));
     } catch (error) {
-      if (error.message === "Token invalide") {
         // Gestion de l'erreur en mettant à jour le State de connexion
         logout(dispatch);
-        console.error("Token invalide. Déconnecté.");
-      } else {
         // Gestion des autres erreurs
-        console.error("Erreur lors de la récupération du profil utilisateur:", error);
-      }
+        console.error(
+          "Erreur lors de la récupération du profil utilisateur:", 
+          error
+        );
     }
   };
 };
