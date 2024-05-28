@@ -6,7 +6,6 @@ import {  // Import des fonctions d'appel d'API
 } from "../../Services/apiService";
 import { logout } from "../../Services/authService";
 
-
 //Définit le State initial du slice contenant les informations sur la connexion de l'utilisateur, le token d'authentification et le profil utilisateur 
 // Pour réutiliser cette valeur dans la "slice" et dans le "reducer"
 const initialState = {
@@ -29,16 +28,20 @@ const userSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
-    // Reducer définissant le profil utilisateur
+    // Reducer définissant le profil utilisateur dans userProfile
     setUserProfile: (state, action) => {
       state.userProfile = action.payload;
     },
-    // Ajout d'une réinitialisation pour réinitialiser l'état de initialState 
+    // Action pour mettre à jour le nom d'utilisateur
+    updateUserName: (state, action) => {
+      state.userProfile.userName = action.payload;
+    },
+    // Ajout d'une réinitialisation de l'état de initialState 
     resetUserProfile: () => initialState,
   },
 });
 // Export des actions défini dans le slice pour les reducers
-export const { setConnectionIndicator, setToken, setUserProfile, resetUserProfile } =
+export const { setConnectionIndicator, setToken, setUserProfile, updateUserName, resetUserProfile } =
   userSlice.actions;
 
 // Fonction asynchrone pour récupérer le profil utilisateur à l'aide du token dans l'API
@@ -46,8 +49,7 @@ export const fetchUserProfileAsync = (token) => {
   return async (dispatch) => {
     try {
       const userProfileData = await fetchUserProfile(token);
-      const userProfile = userProfileData.body;
-      dispatch(setUserProfile(userProfile));
+      dispatch(setUserProfile(userProfileData.body));
     } catch (error) {
         // Gestion de l'erreur en mettant à jour le State de connexion
         logout(dispatch);
@@ -61,12 +63,15 @@ export const fetchUserProfileAsync = (token) => {
 };
 
 // fonction asynchrone pour mettre à jour le nom de l'utilisateur à partir de l'API
+// Dans la fonction updateUserNameAsync
 export const updateUserNameAsync = (token, newUserName) => {
   return async (dispatch) => {
     try {
-      // Appel de l'API pour mettre à jour le nom
       const updatedProfileData = await updateProfile(token, newUserName);
       const updatedProfile = updatedProfileData.body;
+      dispatch(updateUserName(updatedProfileData.body.userName));
+      dispatch(setUserProfile(updatedProfileData.body));
+      // Dispatch de l'action updateUserName avec le nouveau nom d'utilisateur
 
       // Mise à jour du profil utilisateur dans le Redux store
       dispatch(setUserProfile(updatedProfile));
@@ -93,8 +98,7 @@ export const signInAsync = (userName, password, rememberMe) => {
       }
       // Utilisation du token pour récupérer le profil de l'utilisateur
       const userProfileData = await fetchUserProfile(token);
-      const userProfile = userProfileData.body;
-      dispatch(setUserProfile(userProfile));
+      dispatch(setUserProfile(userProfileData.body));
       dispatch(setConnectionIndicator(true));
       return true; // Connexion réussie
     } catch (error) {
