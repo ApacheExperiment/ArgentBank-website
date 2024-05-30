@@ -67,9 +67,9 @@ export const fetchUserProfileAsync = (token) => {
 export const updateUserNameAsync = (token, newUserName) => {
   return async (dispatch) => {
     try {
-      const updatedProfileData = await updateProfile(token, newUserName);
-      const updatedProfile = updatedProfileData.body;
-      dispatch(updateUserName(updatedProfileData.body.userName));
+      const updatedProfileData = await updateProfile(token, newUserName); //Envoie une requête pour mettre à jour le nom d'utilisateur avec le nouveau nom
+      const updatedProfile = updatedProfileData.body; //Propriété 'body' extraite de updatedProfileData, contenant les informations mises à jour du profil utilisateur
+      dispatch(updateUserName(updatedProfileData.body.userName)); // State du nouveau nom à jour dans Redux
       dispatch(setUserProfile(updatedProfileData.body));
       // Dispatch de l'action updateUserName avec le nouveau nom d'utilisateur
 
