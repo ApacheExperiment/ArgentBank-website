@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ArgentBank-website/static/css/main.6425c034.css",
+    "main.js": "/ArgentBank-website/static/js/main.899576b8.js",
+    "static/media/bank-tree.webp": "/ArgentBank-website/static/media/bank-tree.0de638e6280e2a2d4afa.webp",
+    "static/media/icon-security.webp": "/ArgentBank-website/static/media/icon-security.4e5c48d1a8f33821ba97.webp",
+    "static/media/icon-chat.webp": "/ArgentBank-website/static/media/icon-chat.8eb53e248fee21ba74a3.webp",
+    "static/media/icon-money.webp": "/ArgentBank-website/static/media/icon-money.037bd04fa85c7ad34c64.webp",
+    "static/media/argentBankLogo.webp": "/ArgentBank-website/static/media/argentBankLogo.5f42317bafc1baa212a4.webp",
+    "static/media/argentBankCoffre.webp": "/ArgentBank-website/static/media/argentBankCoffre.d7714915099852e4045e.webp",
+    "static/media/arrow_right.webp": "/ArgentBank-website/static/media/arrow_right.ae495d58c2399923631a.webp",
+    "index.html": "/ArgentBank-website/index.html",
+    "static/media/Coffre.webp": "/ArgentBank-website/static/media/Coffre.e1f0684afc0b2c27aaee.webp",
+    "main.6425c034.css.map": "/ArgentBank-website/static/css/main.6425c034.css.map",
+    "main.899576b8.js.map": "/ArgentBank-website/static/js/main.899576b8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6425c034.css",
+    "static/js/main.899576b8.js"
+  ]
+}
