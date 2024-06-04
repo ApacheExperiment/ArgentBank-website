@@ -16,6 +16,7 @@ function Router() {
             <Routes> {/* Les différentes routes de l'application*/}
                 <Route path="/" element={<Home />} /> 
                 <Route path="/Home" element={<Home />} />
+                <Route path="https://apacheexperiment.github.io/ArgentBank-website/" element={<Home/>}/>
                 <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/profile" element={<AuthKeep><Profile /></AuthKeep>} />
                 <Route path="/profile/edit-user-name" element={<AuthKeep><EditUserName /></AuthKeep>} />

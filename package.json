@@ -1,5 +1,4 @@
 {
-  "homepage":"https://ApacheExperiment.github.io/ArgentBank-website",
   "name": "argent-bank-api",
   "version": "0.0.1",
   "private": true,
@@ -24,11 +23,9 @@
   "scripts": {
     "dev:server": "nodemon ./server/server.js",
     "populate-db": "node ./server/scripts/populateDatabase.js",
-    "server": "node ./server/server.js",
-    "deploy": "gh-pages -d build"
+    "server": "node ./server/server.js"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
     "nodemon": "^2.0.4"
   }
 }
