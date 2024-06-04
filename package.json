@@ -1,5 +1,4 @@
 {
-  "homepage":"https://ApacheExperiment.github.io/ArgentBank-website",
   "name": "argent-bank-api",
   "version": "0.0.1",
   "private": true,
@@ -28,7 +27,6 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
     "nodemon": "^2.0.4"
   }
 }
